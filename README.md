@@ -43,7 +43,7 @@ if(a==140){
 Fórmula: qs = 98,24034 - 34,7145 × (log(CF)) + 2,614267 × (log (CF))2 + 0,107821 × (log(CF))3 
 
 Linearizamos para: 
-	if  (b>10000){
+if  (b>10000){
 		q2=3;
 	}
 	else{
@@ -65,7 +65,7 @@ qs = -7.698,19 + 3.262,031 ×  pH - 499,494 ×  pH2 + 33,1551 ×  pH3 - 0,810613
 
 Linearizamos para: 
 
-	if(c<=2){
+if(c<=2){
 		q3=1;
 	}
 	else if(c>2 && c<=6.9){
@@ -88,7 +88,7 @@ Fórmula: Para DBO ≤ 30 mg/L
 	 Para DBO > 30,0 mg/L 
 	 
 Linearizamos para:
-	if(d>30){
+if(d>30){
 		q4=2;
 	}
 	else{
