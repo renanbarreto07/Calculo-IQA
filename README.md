@@ -30,7 +30,7 @@ Interpretamos as equações estimadas no artigo de estudo para o desenvolvimento
 Fórmula Cs = (14,2 ×  e - 0,0212T - (0,0016 × CCl ×  e - 0,0264T)) ×  (0,994 - (0,0001042  ×  H)) 
 
 Linearizamos para: 
-if(a==140){
+	if(a==140){
 		q1=47;
 	}
 
@@ -43,7 +43,7 @@ if(a==140){
 Fórmula: qs = 98,24034 - 34,7145 × (log(CF)) + 2,614267 × (log (CF))2 + 0,107821 × (log(CF))3 
 
 Linearizamos para: 
-if  (b>10000){
+	if  (b>10000){
 		q2=3;
 	}
 	else{
@@ -65,7 +65,7 @@ qs = -7.698,19 + 3.262,031 ×  pH - 499,494 ×  pH2 + 33,1551 ×  pH3 - 0,810613
 
 Linearizamos para: 
 
-if(c<=2){
+	if(c<=2){
 		q3=1;
 	}
 	else if(c>2 && c<=6.9){
@@ -88,21 +88,127 @@ Fórmula: Para DBO ≤ 30 mg/L
 	 Para DBO > 30,0 mg/L 
 	 
 Linearizamos para:
-if(d>30){
+	if(d>30){
 		q4=2;
 	}
 	else{
 		q4= 100.9571 - 10.7121 * d + 0.49544 * pow(d, 2) - 0.011167 * pow(d, 3) + 0.0001 * pow(d, 4);
 	}
 
+++Nitrato Total
 
+Fórmula: Para NO3 ≤10 mg/L    
+• Para 10 < NO3 ≤60 mg/L    
+• Para 60 < NO3 ≤90 mg/L    
+• Para NO3 > 90 mg/L    
+ ) ,1161 5 3.000.000.00010 −× (= NOq s
+() ,18 101ln853,22 3 = − × + NOq s
+,1711005, 3 − × += NOq 
 
+Linearizamos para: 
+	if(e<=10){
+		q5=-5.1*e+100.17;
+	}
+	else if(e>10 && e<=60){
+		q5=-22.853*log(e) + 101.18;
+	}
+	else if(e>60 && e<=90){
+		q5=10000000000*pow(e, -5.1161);
+	}
+	else{
+		q5=1;
+	}
 
+++Fosfato Total
 
+Fórmula: Para PO4 ≤ 10 mg/L  
+qs = 79,7 × (PO4 + 0,821) - 1,15  
+• Para PO4 > 10,0 mg/L
 
+Linearizamos para: 
+if(f>10){
+		q6=5;
+	}
+	else{
+		q6= 79.7*(pow(f + 0.821, -1.15));
+	}
+	//Cálculo de Turbidez
+	if(g>100){
+		q7=5;
+	}
+	else{
+		q7=90.37* pow(2.7182818, (-0.0169 * g)) - 15*cos((0.0571*(g-30))) + 10,22* pow(2.718281828, (-0.231*g)) -0.8;
+	}
 
+++Turbidez
 
+Fórmula: Para Tu ≤100  
+	 qs = 90,37 × e(-0,0169 × Tu) - 15 × cos (0,0571 × (Tu - 30)) + 10,22 × e(-0,231 × Tu) - 0,8  
+	 Para Tu > 100   
+ 
+Linearizamos para: 
+	if(g>100){
+		q7=5;
+	}
+	else{
+		q7=90.37* pow(2.7182818, (-0.0169 * g)) - 15*cos((0.0571*(g-30))) + 10,22* pow(2.718281828, (-0.231*g)) -0.8;
+	}
+	//Cálculo de Sólidos Totais
+	if(h>500){
+		q8=30;
+	}
+	else{
+		q8= 133.17* (pow(2.7182818, (-0.0027 * h))) -53.17* (pow(2.7182818 , (-0.0141 * h))) + ((-6.2*(pow(2.7182818, (-0.00462*h)))) *sin(0.0146*h));
 
+	}
+
+++Sólidos Totais
+
+Fórmula:  Para ST ≤ 500 
+	  qs = 133,17 ×  e (- 0,0027 × ST)  - 53,17 ×  e (- 0,0141 × ST)  + [(- 6,2 ×  e(- 0,00462 × ST)    ) ×  sen (0,0146 ×  ST)]  
+	  Para ST > 500   
+	  
+Linearizamos para: 
+	if(h>500){
+		q8=30;
+	}
+	else{
+		q8= 133.17* (pow(2.7182818, (-0.0027 * h))) -53.17* (pow(2.7182818 , (-0.0141 * h))) + ((-6.2*(pow(2.7182818, (-0.00462*h)))) *sin(0.0146*h));
+		
+++Variacao de Temperatura em °C
+
+Fórmula: ∆T ≅ 0  
+	 Para –0,625 < ∆T ≤ 0625      
+
+Linearizamos para: 
+	if(i>15){
+		q9=9;
+	}
+	else if(i<=5){
+		q9=1;
+	}
+	else{
+		q9=1/(0.0003869*pow(i + 0.1815, 2) + 0.01081);
+	}
+	//Distribuição dos pesos nos resultados das equações
+	qt=( (a*0.17) + (b*0.15) + (c*0.12) + (d*0.10) + (e*0.10) + (f*0.10) + (g*0.10) + (h*0.08) + (i*0.08));
+
+	if(qt<=100 && qt>80){
+		printf("Valor do IQA: %f Qualidade da Agua:%s\n", qt, l);
+	}
+	if(qt<=80 && qt>50){
+		printf("Valor do IQA: %f Qualidade da Agua:%s\n", qt, j);
+	}
+	if(qt<=50 && qt>36){
+		printf("Valor do IQA: %f Qualidade da Agua:%s\n", qt, k);
+	}
+	if(qt<=36 && qt>20){
+		printf("Valor do IQA: %f Qualidade da Agua:%s\n", qt, o);
+	}
+	if(qt<=20){
+		printf("Valor do IQA: %f Qualidade da Agua:%s\n", qt, p);
+	}
+  
 
 
 
