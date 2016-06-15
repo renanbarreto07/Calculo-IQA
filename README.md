@@ -8,6 +8,7 @@ Este software tem o objetivo de diagnosticar e servir como ferramenta de gestão
 Instruções sobre como operar o programa:
 
 Os parâmetros que devem ser informados para analisar a qualidade da água devem ser informados na seguinte ordem: valor de Oxigenio Dissolvido, valor de Coliformes Fecais, Valor de pH, Valor de Demanda Bioquimica de Oxigenio, Valor de Nitrato Total, Valor de Fosfato Total, Valor de Turbidez, Valor de Solidos Totais e o Valor de Variacao de Temperatura em °C.
+
 Os pesos destes índices são os valores informados no mesmo artigo em que nos baseamos para desenvolvimento: 
 Oxigênio Dissolvido 0,17
 Coliformes Fecaisl  0,15
