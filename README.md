@@ -40,5 +40,5 @@ SISTEMA DE CÁLCULO DA QUALIDADE DA ÁGUA (SCQA) Estabelecimento das Equações 
 Samuel Eleutério Dep. Física, IST, 2015 http://arjuna.ist.utl.pt/IC/Apresentacao.php
 
 
-© Desenvolvido por: Renan Barreto Marques da Rosa e Matheus Santos Guanaz
+Desenvolvido por: Renan Barreto Marques da Rosa e Matheus Santos Guanaz
                     renanbarreto07@gmail.com     /  MATHEUSGUANAZ@hotmail.com
