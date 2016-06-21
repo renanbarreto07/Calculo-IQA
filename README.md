@@ -6,7 +6,7 @@ Como instalar:
 Tutorial para instalação dos requisitos para a execução do Calculo-IQA: http://arjuna.ist.utl.pt/IC/HowTo/HowTo_MSYS2.php
 
 Baixar os arquivos na pasta home que o msys criou para compilar os arquivos;
-
+Criar um arquivo em branco no bloco de notas e salvá-lo como "arquivo.txt" sem as aspas;
 Para compilar o programa e executar, é necessário baixar a interface em xml e deixa-lá na mesma pasta do código fonte e da biblioteca, para compilar o programa é necessário digitar na linha de comando do mingw(na pasta que contém os arquivos):
 
 gcc main.c -o main `pkg-config --cflags --libs gtk+-3.0`
